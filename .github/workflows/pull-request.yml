@@ -11,6 +11,7 @@ on:
 
 jobs:
   all_github_action_checks:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     needs:
       - rustfmt
@@ -21,6 +22,7 @@ jobs:
         working-directory: ./
 
   rustfmt:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -44,6 +46,7 @@ jobs:
           args: --manifest-path ./rust/Cargo.toml --all -- --check
 
   clippy:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -80,6 +83,7 @@ jobs:
           args: --manifest-path ./rust/Cargo.toml -Zunstable-options --workspace --all-targets -- --deny=warnings
 
   cargo-build-test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
